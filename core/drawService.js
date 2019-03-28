@@ -12,7 +12,7 @@ sboModule.drawService = (function () {
         http.open('HEAD', videoUrl.replace(/^(.*)\/.*$/, '$1/' + flavor.id));
         http.onreadystatechange = function () {
             if (this.readyState === this.DONE) {
-                let newUrl = http.getAllResponseHeader("Location");
+                let newUrl = http.getResponseHeader("Location");
                 // let finalUrl = this.responseURL.slice(0, -1 * '/clipTo/60000/name/a.mp4'.length);
                 chrome.runtime.sendMessage({
                     videoUrl: newUrl,
